@@ -8,6 +8,14 @@ builder.Services.AddScoped<IEmailService, EmailService>();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // [SECTION: CORE APP SERVICES]
+// Team Security: JWT Authentication and Authorization setup
+builder.Services.AddAuthentication("Bearer")
+    .AddJwtBearer(options => {
+        options.Authority = "https://auth.company.com";
+        options.Audience = "practice-api";
+    });
+builder.Services.AddAuthorization();
+// [SECTION: CORE APP SERVICES]
 // Payment Gateway: Stripe payment client and checkout handler
 builder.Services.AddHttpClient("StripePayment", client => {
     client.BaseAddress = new Uri("https://api.stripe.com/v1/");
