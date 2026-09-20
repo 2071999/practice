@@ -10,5 +10,7 @@ export class AppComponent {
   title = 'Practice Git Learning App';
   // status = 'Ready for Branching & PR Practice';
   status = 'Stripe Payment Gateway is Active';
-  status = 'Server Maintenance Mode Active- chnages from The devlop';
+  status = 'Server Maintenance Mode Active- chnages from The devlop - payment-branch';
+  status = 'My chnages';
+
 }
