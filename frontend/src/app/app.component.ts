@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Practice Git Learning App';
-  status = 'Ready for Branching & PR Practice';
+  // status = 'Ready for Branching & PR Practice';
+  status = 'WhatsApp Integration in progress';
 }
