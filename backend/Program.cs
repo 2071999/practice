@@ -3,15 +3,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddOpenApi();
 builder.Services.AddScoped<IWhatsAppService, WhatsAppService>();
-// Fraser's Email Service
 builder.Services.AddScoped<IEmailService, EmailService>();
 
-
-// Connection string from configuration
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-// Register application services (practice area for merge conflicts)
-// [LINE 10]: Services registration area
+// [SECTION: CORE APP SERVICES]
+// Payment Gateway: Stripe payment client and checkout handler
+builder.Services.AddHttpClient("StripePayment", client => {
+    client.BaseAddress = new Uri("https://api.stripe.com/v1/");
+    client.Timeout = TimeSpan.FromSeconds(30);
+});
+builder.Services.AddScoped<IPaymentGateway, StripePaymentGateway>();
 
 var app = builder.Build();
 
