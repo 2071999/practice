@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Practice Git Learning App';
   // status = 'Ready for Branching & PR Practice';
-  status = 'WhatsApp Integration in progress';
+  status = 'Server Maintenance Mode Active';
 }
