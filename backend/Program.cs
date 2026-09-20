@@ -15,6 +15,13 @@ builder.Services.AddAuthentication("Bearer")
         options.Audience = "practice-api";
     });
 builder.Services.AddAuthorization();
+// [SECTION: CORE APP SERVICES]
+// Payment Gateway: Stripe payment client and checkout handler
+builder.Services.AddHttpClient("StripePayment", client => {
+    client.BaseAddress = new Uri("https://api.stripe.com/v1/");
+    client.Timeout = TimeSpan.FromSeconds(30);
+});
+builder.Services.AddScoped<IPaymentGateway, StripePaymentGateway>();
 
 var app = builder.Build();
 
