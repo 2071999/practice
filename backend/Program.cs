@@ -2,6 +2,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddOpenApi();
+builder.Services.AddScoped<IWhatsAppService, WhatsAppService>();
+
 
 // Connection string from configuration
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
