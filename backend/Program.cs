@@ -3,15 +3,18 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddOpenApi();
 builder.Services.AddScoped<IWhatsAppService, WhatsAppService>();
-// Fraser's Email Service
 builder.Services.AddScoped<IEmailService, EmailService>();
 
-
-// Connection string from configuration
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-// Register application services (practice area for merge conflicts)
-// [LINE 10]: Services registration area
+// [SECTION: CORE APP SERVICES]
+// Team Security: JWT Authentication and Authorization setup
+builder.Services.AddAuthentication("Bearer")
+    .AddJwtBearer(options => {
+        options.Authority = "https://auth.company.com";
+        options.Audience = "practice-api";
+    });
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
