@@ -40,3 +40,4 @@ app.MapGet("/api/status", () => Results.Ok(new {
 }));
 
 app.Run();
+// Update: Health check monitoring service added
