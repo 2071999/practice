@@ -9,5 +9,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Customer Loyalty & VIP Rewards Portal';
   status = 'Develop: Customer Rewards Engine Active';
-  vipMemberCount = 1250;
+  orderCount = 999;
+
 }
