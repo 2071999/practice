@@ -1,31 +1,30 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddOpenApi();
 builder.Services.AddScoped<IWhatsAppService, WhatsAppService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-// [SECTION: CORE APP SERVICES]
-// Team Security: JWT Authentication and Authorization setup
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer(options => {
         options.Authority = "https://auth.company.com";
         options.Audience = "practice-api";
     });
 builder.Services.AddAuthorization();
-// [SECTION: CORE APP SERVICES]
-// Payment Gateway: Stripe payment client and checkout handler
+
 builder.Services.AddHttpClient("StripePayment", client => {
     client.BaseAddress = new Uri("https://api.stripe.com/v1/");
     client.Timeout = TimeSpan.FromSeconds(30);
 });
 builder.Services.AddScoped<IPaymentGateway, StripePaymentGateway>();
 
+// [FEATURE 26092026]: Order and Shipping Management
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IShippingService, ShippingService>();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();

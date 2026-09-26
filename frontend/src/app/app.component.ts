@@ -7,11 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Practice Git Learning App';
-  // status = 'Ready for Branching & PR Practice';
-  status = 'Stripe Payment Gateway is Active';
-  status = 'Server Maintenance Mode Active- chnages from The devlop - payment-branch';
-  status = 'My chnages';
-  status = 'My chnages 2';
-
+  title = 'Order & Shipping Management Hub';
+  status = 'Feature 26092026: Order Module Active';
+  orderCount = 42;
 }
