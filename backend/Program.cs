@@ -19,6 +19,10 @@ builder.Services.AddHttpClient("StripePayment", client => {
 });
 builder.Services.AddScoped<IPaymentGateway, StripePaymentGateway>();
 
+// [DEVELOP]: Customer Loyalty and Rewards Program
+builder.Services.AddScoped<ILoyaltyService, LoyaltyService>();
+builder.Services.AddScoped<IRewardsEngine, RewardsEngine>();
+
 // [FEATURE 26092026]: Order and Shipping Management
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IShippingService, ShippingService>();
