@@ -12,6 +12,6 @@ export class AppComponent {
   status = 'Stripe Payment Gateway is Active';
   status = 'Server Maintenance Mode Active- chnages from The devlop - payment-branch';
   status = 'My chnages';
-  status = 'My chnages 2';
+  status = 'My chnages 2-345';
 
 }
