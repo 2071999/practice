@@ -23,6 +23,10 @@ builder.Services.AddScoped<IPaymentGateway, StripePaymentGateway>();
 builder.Services.AddScoped<ILoyaltyService, LoyaltyService>();
 builder.Services.AddScoped<IRewardsEngine, RewardsEngine>();
 
+// [FEATURE 26092026]: Order and Shipping Management
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IShippingService, ShippingService>();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
